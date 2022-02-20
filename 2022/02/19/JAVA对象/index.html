@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.4.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://zxfblog.cn/"/>
+  
+  <link rel="canonical" href="https://zxfblog.cn/2022/02/19/java对象/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -26,15 +26,17 @@
 
   <!-- 页面元数据 -->
   <title>zxf个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="hello,every body!">
-<meta property="og:type" content="website">
+  <meta name="keywords" content="null">
+  <meta name="description" content="JAVA对象对象的布局：1.实例数据 浮动的 2.对象头 固定的 3.对齐填充 浮动的 对象头：Mark Word: 64bit klass :32 bit&#x2F;64 bit 是否开启指针压缩  对象的状态：lock占两个比特位，共可以表达四种状态，偏向锁用单独的biased_lock &#x3D;1 来标识 age 用来表示对象的年龄，用于GC时使用">
+<meta property="og:type" content="article">
 <meta property="og:title" content="zxf个人博客">
-<meta property="og:url" content="https://zxfblog.cn/index.html">
+<meta property="og:url" content="https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="zxf个人博客">
-<meta property="og:description" content="hello,every body!">
+<meta property="og:description" content="JAVA对象对象的布局：1.实例数据 浮动的 2.对象头 固定的 3.对齐填充 浮动的 对象头：Mark Word: 64bit klass :32 bit&#x2F;64 bit 是否开启指针压缩  对象的状态：lock占两个比特位，共可以表达四种状态，偏向锁用单独的biased_lock &#x3D;1 来标识 age 用来表示对象的年龄，用于GC时使用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zxfblog.cn/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-02-19T04:08:42.729Z">
+<meta property="article:modified_time" content="2021-08-31T05:25:47.302Z">
 <meta property="article:author" content="Xiaofei Zhang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://zxfblog.cn/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1729,7 +1731,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js","sites":"/js/plugins/sites.js?time=1645334386616","friends":"/js/plugins/friends.js?time=1645334386616","parallax":"/js/plugins/parallax.js?time=1645334386616","rightMenu":"/js/plugins/rightMenu.js?time=1645334386616","contributors":"/js/plugins/contributors.js?time=1645334386616","message":"/js/thirdparty/message.js?time=1645334386616","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js","search":"/js/search/hexo.js?time=1645334386616"},"css":{"style":"/css/style.css","message":"/css/message.css?time=1645334386616"}},
+    cdn: {"js":{"app":"/js/app.js","sites":"/js/plugins/sites.js?time=1645334386593","friends":"/js/plugins/friends.js?time=1645334386593","parallax":"/js/plugins/parallax.js?time=1645334386593","rightMenu":"/js/plugins/rightMenu.js?time=1645334386593","contributors":"/js/plugins/contributors.js?time=1645334386593","message":"/js/thirdparty/message.js?time=1645334386593","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js","search":"/js/search/hexo.js?time=1645334386593"},"css":{"style":"/css/style.css","message":"/css/message.css?time=1645334386593"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
     lastupdate: new Date('Sun Feb 20 2022 13:19:46 GMT+0800 (GMT+08:00)'),
     sidebar: {
@@ -2115,7 +2117,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files head end-->
 </head>
   <body itemscope itemtype="http://schema.org/WebPage">
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2384,7 +2386,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="full" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
 
@@ -2449,7 +2451,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-        <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </div>
     
   
@@ -2459,37 +2461,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="zxf个人博客">
@@ -2499,90 +2471,155 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="hello,every body!">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/"  itemprop="url">
-        2022年2月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        JAVA对象对象的布局：1.实例数据 浮动的
-2.对象头 固定的
-3.对齐填充 浮动的
-对象头：Mark Word: 64bit
-klass :32 bit/64 bit 是否开启指针压缩
-
-对象的状态：lock占两个比特位，共可以表达四种状态，偏向锁用单独的biased_lock =1 来标识
-age 用来表示对象的年龄，用于GC时使用
-
-
-
-
-      
+    
+      <span hidden itemprop="name headline">
+        
+      </span>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="JAVA对象"><a href="#JAVA对象" class="headerlink" title="JAVA对象"></a>JAVA对象</h1><h2 id="对象的布局："><a href="#对象的布局：" class="headerlink" title="对象的布局："></a>对象的布局：</h2><div class="story post-story"><p>1.实例数据 浮动的</p>
+<p>2.对象头 固定的</p>
+<p>3.对齐填充 浮动的</p>
+</div><h2 id="对象头："><a href="#对象头：" class="headerlink" title="对象头："></a>对象头：</h2><div class="story post-story"><p>Mark Word: 64bit</p>
+<p>klass :32 bit/64 bit 是否开启指针压缩</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20210719204544764.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20210719204544764.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20210719204544764"></p>
+<p>对象的状态：lock占两个比特位，共可以表达四种状态，偏向锁用单独的biased_lock =1 来标识</p>
+<p>age 用来表示对象的年龄，用于GC时使用</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20210809204623044.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20210809204623044.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20210809204623044"></p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20210831132543593.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20210831132543593.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20210831132543593"></p>
+
+</div>
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-19T12:08:42+08:00">2022-02-19</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/' itemprop="url">
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/>https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-08-31T13:25:47+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年8月31日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/JVM/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zxf个人博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="zxf个人博客">
-    <meta itemprop="description" content="hello,every body!">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/19/JVM/"  itemprop="url">
-        2022年2月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        JVM1.JVM的整体结构
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/&title= - zxf个人博客&summary="
+          
+          >
+          
+            <img src="/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/&title= - zxf个人博客&summary="
+          
+          >
+          
+            <img src="/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/&title= - zxf个人博客&summary="
+          
+          >
+          
+            <img src="/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2022/02/19/JVM/'>
+          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>JVM1.JVM的整体结构
 JVM的生命周期
 
 JVM详细结构图
@@ -2595,161 +2632,34 @@ JVM详细结构图
 2.执行引擎
 3.运行时数据区
 
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-19T12:08:38+08:00">2022-02-19</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/19/JVM/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/netty-NIO/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zxf个人博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="zxf个人博客">
-    <meta itemprop="description" content="hello,every body!">
-  </span>
   
+
   
-  
+  <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/19/netty-NIO/"  itemprop="url">
-        2022年2月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        NIO模型多路复用
+    <div id="layoutHelper-comments"></div>
 
-获取操作系统epoll的结构体，封装了操作系统的相关函数
-
-
-上图：注册，调用pollWrapper将fd(文件描述服务，ServerSocketChannel)放入到array集合中，用于后续观察是否有事件发生
-
-
-上图：pollWrapper.poll对所有的channel进行轮询
-
-调用上图操作系统内核函数方法让监听事件生效
-
-
-调用上图linux系统函数调用 e...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-19T12:08:34+08:00">2022-02-19</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/19/netty-NIO/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
+  </article>
   
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/12/hello-world/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zxf个人博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="zxf个人博客">
-    <meta itemprop="description" content="hello,every body!">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/12/hello-world/"  itemprop="url">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-12T21:32:05+08:00">2022-02-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/12/hello-world/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
 
 
 </div>
@@ -2759,87 +2669,34 @@ Qu...
     
     
 
-<section class="widget blogger shadow desktop mobile pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">zxf个人博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
-
-  
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%83%E5%B1%80%EF%BC%9A"><span class="toc-text">对象的布局：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%A4%B4%EF%BC%9A"><span class="toc-text">对象头：</span></a></li></ol>
+    </div>
+  </section>
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2885,15 +2742,15 @@ Qu...
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="full";
-      cover_wrapper.style.display="";
-      scroll_down.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
+      scroll_down.style.display="none";
     
   
 </script>
@@ -3178,7 +3035,7 @@ Qu...
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1645334386616')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1645334386593')</script>
 
 
 
@@ -3191,19 +3048,19 @@ Qu...
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1645334386616")
+        volantis.js("/js/plugins/sites.js?time=1645334386593")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1645334386616")
+        volantis.js("/js/plugins/friends.js?time=1645334386593")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1645334386616")
+        volantis.js("/js/plugins/contributors.js?time=1645334386593")
       }
     
   };
@@ -3328,7 +3185,7 @@ Qu...
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1645334386616");
+    return volantis.js("/js/search/hexo.js?time=1645334386593");
   }
 
   function loadSearchService() {
@@ -3615,7 +3472,7 @@ Qu...
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"zxf个人博客","url":"https://zxfblog.cn/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/","sameAs":["https://github.com/volantis-x"],"description":"hello,every body!"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://zxfblog.cn/","name":"zxf个人博客"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"zxf个人博客","url":"https://zxfblog.cn/","keywords":null,"description":"hello,every body!","author":{"@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/","description":"hello,every body!"},"publisher":{"@type":"Organization","name":"zxf个人博客","url":"https://zxfblog.cn/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://zxfblog.cn?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"zxf个人博客","url":"https://zxfblog.cn/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/","sameAs":["https://github.com/volantis-x"],"description":"hello,every body!"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://zxfblog.cn/","name":"zxf个人博客"}},{"@type":"ListItem","position":3,"item":{"@id":"https://zxfblog.cn/2022/02/19/JAVA对象/","name":""}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"","description":"","datePublished":"2022-02-19T04:08:42.729Z","dateModified":"2021-08-31T05:25:47.302Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/"},"author":{"@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/"},"publisher":{"@type":"Organization","name":"zxf个人博客","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/","wordCount":0,"image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

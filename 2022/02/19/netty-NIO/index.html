@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.4.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://zxfblog.cn/"/>
+  
+  <link rel="canonical" href="https://zxfblog.cn/2022/02/19/netty-nio/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -26,15 +26,17 @@
 
   <!-- 页面元数据 -->
   <title>zxf个人博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="hello,every body!">
-<meta property="og:type" content="website">
+  <meta name="keywords" content="null">
+  <meta name="description" content="NIO模型多路复用  获取操作系统epoll的结构体，封装了操作系统的相关函数   上图：注册，调用pollWrapper将fd(文件描述服务，ServerSocketChannel)放入到array集合中，用于后续观察是否有事件发生   上图：pollWrapper.poll对所有的channel进行轮询  调用上图操作系统内核函数方法让监听事件生效   调用上图linux系统函数调用 epol">
+<meta property="og:type" content="article">
 <meta property="og:title" content="zxf个人博客">
-<meta property="og:url" content="https://zxfblog.cn/index.html">
+<meta property="og:url" content="https://zxfblog.cn/2022/02/19/netty-NIO/index.html">
 <meta property="og:site_name" content="zxf个人博客">
-<meta property="og:description" content="hello,every body!">
+<meta property="og:description" content="NIO模型多路复用  获取操作系统epoll的结构体，封装了操作系统的相关函数   上图：注册，调用pollWrapper将fd(文件描述服务，ServerSocketChannel)放入到array集合中，用于后续观察是否有事件发生   上图：pollWrapper.poll对所有的channel进行轮询  调用上图操作系统内核函数方法让监听事件生效   调用上图linux系统函数调用 epol">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zxfblog.cn/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-02-19T04:08:34.959Z">
+<meta property="article:modified_time" content="2021-12-14T06:00:23.249Z">
 <meta property="article:author" content="Xiaofei Zhang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://zxfblog.cn/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1729,7 +1731,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js","sites":"/js/plugins/sites.js?time=1645334386616","friends":"/js/plugins/friends.js?time=1645334386616","parallax":"/js/plugins/parallax.js?time=1645334386616","rightMenu":"/js/plugins/rightMenu.js?time=1645334386616","contributors":"/js/plugins/contributors.js?time=1645334386616","message":"/js/thirdparty/message.js?time=1645334386616","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js","search":"/js/search/hexo.js?time=1645334386616"},"css":{"style":"/css/style.css","message":"/css/message.css?time=1645334386616"}},
+    cdn: {"js":{"app":"/js/app.js","sites":"/js/plugins/sites.js?time=1645334386597","friends":"/js/plugins/friends.js?time=1645334386597","parallax":"/js/plugins/parallax.js?time=1645334386597","rightMenu":"/js/plugins/rightMenu.js?time=1645334386597","contributors":"/js/plugins/contributors.js?time=1645334386597","message":"/js/thirdparty/message.js?time=1645334386597","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js","search":"/js/search/hexo.js?time=1645334386597"},"css":{"style":"/css/style.css","message":"/css/message.css?time=1645334386597"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
     lastupdate: new Date('Sun Feb 20 2022 13:19:46 GMT+0800 (GMT+08:00)'),
     sidebar: {
@@ -2115,7 +2117,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files head end-->
 </head>
   <body itemscope itemtype="http://schema.org/WebPage">
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2384,7 +2386,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="full" class='cover-wrapper  dock' style="display: ;">
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
 
@@ -2449,7 +2451,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-        <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </div>
     
   
@@ -2459,38 +2461,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/netty-NIO/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="zxf个人博客">
   </span>
@@ -2499,90 +2471,181 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="hello,every body!">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/"  itemprop="url">
-        2022年2月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        JAVA对象对象的布局：1.实例数据 浮动的
-2.对象头 固定的
-3.对齐填充 浮动的
-对象头：Mark Word: 64bit
-klass :32 bit/64 bit 是否开启指针压缩
-
-对象的状态：lock占两个比特位，共可以表达四种状态，偏向锁用单独的biased_lock =1 来标识
-age 用来表示对象的年龄，用于GC时使用
-
-
-
-
-      
+    
+      <span hidden itemprop="name headline">
+        
+      </span>
     
   </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="NIO模型多路复用"><a href="#NIO模型多路复用" class="headerlink" title="NIO模型多路复用"></a>NIO模型多路复用</h2><div class="story post-story"><p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131141121.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131141121.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214131141121"></p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131424218.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131424218.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214131424218"></p>
+<p>获取操作系统epoll的结构体，封装了操作系统的相关函数</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131731983.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131731983.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214131731983"></p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131936212.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214131936212.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214131936212"></p>
+<p>上图：注册，调用pollWrapper将fd(文件描述服务，ServerSocketChannel)放入到array集合中，用于后续观察是否有事件发生</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132024859.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132024859.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214132024859"></p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132133539.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132133539.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214132133539"></p>
+<p>上图：pollWrapper.poll对所有的channel进行轮询</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132325545.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132325545.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214132325545"></p>
+<p>调用上图操作系统内核函数方法让监听事件生效</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132418451.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132418451.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214132418451"></p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132526358.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132526358.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214132526358"></p>
+<p>调用上图linux系统函数调用 epoll_wait  ：获取epoll实例，看事件集合是否有事件，没有等待，有事件处理事件</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132923418.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214132923418.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214132923418"></p>
+<p>客户端和服务端通过网络驱动程序，调用linux内核函数进行数据交互， 有链接产生操作系统感知到通过<strong>中断程序</strong>将事件放入就绪事件列表</p>
+<p>–解决CPU空转，只处理事件集合</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133553376.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133553376.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214133553376"></p>
+<p><strong>###面试图 select(channel最多1024)，poll,epoll区别</strong></p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133101700.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133101700.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214133101700"></p>
+</div><h2 id="Redis线程模型"><a href="#Redis线程模型" class="headerlink" title="Redis线程模型"></a>Redis线程模型</h2><div class="story post-story"><p> 底层实现</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133746737.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133746737.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214133746737"></p>
+<p>创建epoll实例</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133815240.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133815240.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214133815240"></p>
+<p>epoll_ctl：监听channel注册过来的事件</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133901903.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214133901903.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214133901903"></p>
+<p>处理事件</p>
+<p>基于epoll的实现</p>
+</div><h2 id="Netty-Java-网络编程框架"><a href="#Netty-Java-网络编程框架" class="headerlink" title="Netty-Java 网络编程框架"></a>Netty-Java 网络编程框架</h2><div class="story post-story"><h4 id="Netty和Tomcat有什么区别？"><a href="#Netty和Tomcat有什么区别？" class="headerlink" title="Netty和Tomcat有什么区别？"></a>Netty和Tomcat有什么区别？</h4><p>Netty和Tomcat最大的区别就在于通信协议，Tomcat是基于Http协议的，他的实质是一个基于http协议的web容器，但是Netty不一样，他能通过编程自定义各种协议，因为netty能够通过codec自己来编码/解码字节流，完成类似redis访问的功能，这就是netty和tomcat最大的不同。</p>
+<h4 id="Netty实现"><a href="#Netty实现" class="headerlink" title="Netty实现"></a>Netty实现</h4><p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134433592.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134433592.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214134433592"></p>
+<p> 实现Netty处理类</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134555788.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134555788.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214134555788"></p>
+<p>建立链接回调</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134702261.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134702261.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214134702261"></p>
+<p>读取数据</p>
+<p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134733830.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214134733830.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214134733830"></p>
+<h3 id="Netty线程模型"><a href="#Netty线程模型" class="headerlink" title="Netty线程模型"></a>Netty线程模型</h3><p><img src="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214135145783.png" class="lazyload" data-srcset="C:\Users\zhangxiaofei\AppData\Roaming\Typora\typora-user-images\image-20211214135145783.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20211214135145783"></p>
+<h5 id="Reactor相应式编程设计模式"><a href="#Reactor相应式编程设计模式" class="headerlink" title="Reactor相应式编程设计模式"></a>Reactor相应式编程设计模式</h5>
+</div>
+  </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-19T12:08:42+08:00">2022-02-19</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2022/02/19/JAVA%E5%AF%B9%E8%B1%A1/' itemprop="url">
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://zxfblog.cn/2022/02/19/netty-NIO/>https://zxfblog.cn/2022/02/19/netty-NIO/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-14T14:00:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年12月14日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/JVM/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zxf个人博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="zxf个人博客">
-    <meta itemprop="description" content="hello,every body!">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/19/JVM/"  itemprop="url">
-        2022年2月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        JVM1.JVM的整体结构
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zxfblog.cn/2022/02/19/netty-NIO/&title= - zxf个人博客&summary="
+          
+          >
+          
+            <img src="/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zxfblog.cn/2022/02/19/netty-NIO/&title= - zxf个人博客&summary="
+          
+          >
+          
+            <img src="/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://zxfblog.cn/2022/02/19/netty-NIO/&title= - zxf个人博客&summary="
+          
+          >
+          
+            <img src="/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2022/02/19/JVM/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
+          <p class='content'>JVM1.JVM的整体结构
 JVM的生命周期
 
 JVM详细结构图
@@ -2595,161 +2658,40 @@ JVM详细结构图
 2.执行引擎
 3.运行时数据区
 
-
+</p>
+        </a>
       
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-19T12:08:38+08:00">2022-02-19</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2022/02/19/JVM/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+        <a class='next' href='/2022/02/12/hello-world/'>
+          <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
+        </a>
       
     </div>
   
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/19/netty-NIO/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zxf个人博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="zxf个人博客">
-    <meta itemprop="description" content="hello,every body!">
-  </span>
   
+
   
-  
+  <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2022/02/19/netty-NIO/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/19/netty-NIO/"  itemprop="url">
-        2022年2月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      
-        NIO模型多路复用
+    <div id="layoutHelper-comments"></div>
 
-获取操作系统epoll的结构体，封装了操作系统的相关函数
-
-
-上图：注册，调用pollWrapper将fd(文件描述服务，ServerSocketChannel)放入到array集合中，用于后续观察是否有事件发生
-
-
-上图：pollWrapper.poll对所有的channel进行轮询
-
-调用上图操作系统内核函数方法让监听事件生效
-
-
-调用上图linux系统函数调用 e...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-19T12:08:34+08:00">2022-02-19</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/19/netty-NIO/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
+  </article>
   
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://zxfblog.cn/2022/02/12/hello-world/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="zxf个人博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="zxf个人博客">
-    <meta itemprop="description" content="hello,every body!">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2022/02/12/hello-world/"  itemprop="url">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-02-12T21:32:05+08:00">2022-02-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/02/12/hello-world/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
 
 
 </div>
@@ -2759,87 +2701,34 @@ Qu...
     
     
 
-<section class="widget blogger shadow desktop mobile pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">zxf个人博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
-
-  
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NIO%E6%A8%A1%E5%9E%8B%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="toc-text">NIO模型多路复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">Redis线程模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty-Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%A1%86%E6%9E%B6"><span class="toc-text">Netty-Java 网络编程框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Netty%E5%92%8CTomcat%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">Netty和Tomcat有什么区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Netty%E5%AE%9E%E7%8E%B0"><span class="toc-text">Netty实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Netty%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">Netty线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Reactor%E7%9B%B8%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">Reactor相应式编程设计模式</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </section>
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2885,15 +2774,15 @@ Qu...
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="full";
-      cover_wrapper.style.display="";
-      scroll_down.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
+      scroll_down.style.display="none";
     
   
 </script>
@@ -3178,7 +3067,7 @@ Qu...
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1645334386616')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1645334386597')</script>
 
 
 
@@ -3191,19 +3080,19 @@ Qu...
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1645334386616")
+        volantis.js("/js/plugins/sites.js?time=1645334386597")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1645334386616")
+        volantis.js("/js/plugins/friends.js?time=1645334386597")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1645334386616")
+        volantis.js("/js/plugins/contributors.js?time=1645334386597")
       }
     
   };
@@ -3328,7 +3217,7 @@ Qu...
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1645334386616");
+    return volantis.js("/js/search/hexo.js?time=1645334386597");
   }
 
   function loadSearchService() {
@@ -3615,7 +3504,7 @@ Qu...
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"zxf个人博客","url":"https://zxfblog.cn/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/","sameAs":["https://github.com/volantis-x"],"description":"hello,every body!"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://zxfblog.cn/","name":"zxf个人博客"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"zxf个人博客","url":"https://zxfblog.cn/","keywords":null,"description":"hello,every body!","author":{"@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/","description":"hello,every body!"},"publisher":{"@type":"Organization","name":"zxf个人博客","url":"https://zxfblog.cn/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://zxfblog.cn?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"zxf个人博客","url":"https://zxfblog.cn/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/","sameAs":["https://github.com/volantis-x"],"description":"hello,every body!"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://zxfblog.cn/","name":"zxf个人博客"}},{"@type":"ListItem","position":3,"item":{"@id":"https://zxfblog.cn/2022/02/19/netty-NIO/","name":""}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"","description":"","datePublished":"2022-02-19T04:08:34.959Z","dateModified":"2021-12-14T06:00:23.249Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://zxfblog.cn/2022/02/19/netty-NIO/"},"author":{"@type":"Person","name":"Xiaofei Zhang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://zxfblog.cn/"},"publisher":{"@type":"Organization","name":"zxf个人博客","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://zxfblog.cn/2022/02/19/netty-NIO/","wordCount":0,"image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
